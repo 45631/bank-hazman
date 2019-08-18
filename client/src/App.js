@@ -3,6 +3,7 @@ import { Router, Switch, Route } from "react-router";
 import { createBrowserHistory } from "history";
 
 import { Home } from "./Home";
+import { Account } from "./Account";
 
 const history = createBrowserHistory();
 
@@ -11,8 +12,11 @@ export class App extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route exect path="/">
+          <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/account">
+            <Account />
           </Route>
         </Switch>
       </Router>
