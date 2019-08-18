@@ -1,19 +1,35 @@
 import React, { Component } from "react";
 
 export class Home extends Component {
-  componentDidMount() {
-    fetch("http://localhost:3000/users").then(data =>
-      data.json().then(data => console.log(data))
-    );
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.onCategoryClick = this.onCategoryClick.bind(this);
+  }
+
+  onCategoryClick(category) {
+    console.log("hi " + category);
+    this.setState({ category: category });
   }
 
   render() {
     const categoreis = ["garden", "baby", "car", "food", "learn"];
     const categoriesViews = [];
     categoreis.forEach(category => {
-      const view = <div className="category">{category}</div>;
+      const view = (
+        <div
+          key={category}
+          className="category"
+          onClick={() => {
+            this.onCategoryClick(category);
+          }}
+        >
+          {category}
+        </div>
+      );
       categoriesViews.push(view);
     });
+    const myCategory = this.state.category;
     return (
       <div className="container">
         <header>
@@ -31,6 +47,7 @@ export class Home extends Component {
         </header>
 
         <div>{categoriesViews}</div>
+        <p>{myCategory}</p>
       </div>
     );
   }
