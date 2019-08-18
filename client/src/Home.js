@@ -5,11 +5,16 @@ export class Home extends Component {
     super(props);
     this.state = {};
     this.onCategoryClick = this.onCategoryClick.bind(this);
+    this.toAccount = this.toAccount.bind(this);
   }
 
   onCategoryClick(category) {
     console.log("hi " + category);
     this.setState({ category: category });
+  }
+
+  toAccount() {
+    this.props.history.push("/account");
   }
 
   render() {
@@ -34,9 +39,14 @@ export class Home extends Component {
       <div className="container">
         <header>
           <nav>
-            <a href="#">
-              <button>לחשבון שלי</button>
-            </a>
+            <button
+              onClick={() => {
+                this.toAccount();
+              }}
+            >
+              לחשבון שלי
+            </button>
+
             <ul>
               <li>בית</li>
               <li>אודות</li>

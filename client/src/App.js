@@ -13,7 +13,7 @@ export class App extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home history={history} />
           </Route>
           <Route path="/account">
             <Account />
