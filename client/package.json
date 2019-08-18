@@ -1,0 +1,16 @@
+{
+  "name": "bank-hazman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --open"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^1.12.3",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
