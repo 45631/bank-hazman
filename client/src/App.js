@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 
 import { Home } from "./Home";
 import { Account } from "./Account";
+import { CategoryInfo } from "./CategoryInfo";
 
 const history = createBrowserHistory();
 
@@ -17,6 +18,9 @@ export class App extends Component {
           </Route>
           <Route path="/account">
             <Account />
+          </Route>
+          <Route path="/categoryInfo">
+            <CategoryInfo history={history} />
           </Route>
         </Switch>
       </Router>

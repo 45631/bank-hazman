@@ -10,7 +10,7 @@ export class Home extends Component {
 
   onCategoryClick(category) {
     console.log("hi " + category);
-    this.setState({ category: category });
+    this.props.history.push("/categoryInfo?category=" + category);
   }
 
   toAccount() {
@@ -34,7 +34,6 @@ export class Home extends Component {
       );
       categoriesViews.push(view);
     });
-    const myCategory = this.state.category;
     return (
       <div className="container">
         <header>
@@ -57,7 +56,6 @@ export class Home extends Component {
         </header>
 
         <div>{categoriesViews}</div>
-        <p>{myCategory}</p>
       </div>
     );
   }
