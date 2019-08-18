@@ -1,35 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Router, Switch, Route } from "react-router";
+import { createBrowserHistory } from "history";
 
-export class App extends Component{
+import { Home } from "./Home";
 
-    componentDidMount(){
-        fetch('http://localhost:3000/users').then(data => data.json().then(data => console.log(data)));
-    }
+const history = createBrowserHistory();
 
-    render(){
-        const categoreis = ["garden", "baby", "car", "food","learn"];
-        const categoriesViews = [];
-        categoreis.forEach((category)=>{
-            const view = <div className="category">{category}</div>;
-            categoriesViews.push(view);
-        });
-        return (
-            <div className="container">
-            <header>
-            <nav>
-            <a href="#"><button>לחשבון שלי</button></a>
-            <ul>
-            <li>בית</li>
-            <li>אודות</li>
-            <li>צור קשר</li>
-            <li>טופס הצטרפות</li>
-            </ul>        
-            </nav>         
-            </header>
-
-                <div>{categoriesViews}</div>
-            </div>
-        );
-    }
-
+export class App extends Component {
+  render() {
+    return (
+      <Router history={history}>
+        <Switch>
+          <Route exect path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
 }
