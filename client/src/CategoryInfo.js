@@ -131,11 +131,6 @@ export class CategoryInfo extends Component {
       }
     ];
     const content = "";
-    Categories.forEach(category => {
-      if (categoryName == category.name) {
-        content = category.text;
-      }
-    });
 
     return (
       <div>
