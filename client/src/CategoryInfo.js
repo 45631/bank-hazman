@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2
+} from "react-html-parser";
 
 export class CategoryInfo extends Component {
   constructor(props) {
@@ -130,11 +135,12 @@ export class CategoryInfo extends Component {
 `
       }
     ];
-    const content = "";
+    var content = "";
+    content = Categories.find(ele => ele.name == categoryName);
 
     return (
       <div>
-        <p>{content}</p>
+        <p> {ReactHtmlParser(content.text)}</p>
       </div>
     );
   }
