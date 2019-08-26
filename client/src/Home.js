@@ -18,7 +18,17 @@ export class Home extends Component {
   }
 
   render() {
-    const categoreis = ["garden", "baby", "car", "food", "learn"];
+    const categoreis = [
+      "baby",
+      "tv",
+      "pen",
+      "motorcycle",
+      "cap",
+      "dog",
+      "car",
+      "hamburger",
+      "tools"
+    ];
     const categoriesViews = [];
     categoreis.forEach(category => {
       const view = (
