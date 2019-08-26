@@ -7,22 +7,29 @@ export class Account extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/users").then(data =>
-      data.json().then(data => this.setState({ users: data }))
+    fetch("http://localhost:3000/account").then(data =>
+      data.json().then(data => this.setState({ data: data }))
     );
   }
 
   render() {
-    const users = this.state.users;
-    console.log(users);
-    const usersViews = [];
-    if (users) {
-      users.forEach(user => {
-        const view = <li>{user.name}</li>;
-        usersViews.push(view);
+    const data = this.state.data;
+    console.log(data);
+    const dataViews = [];
+    if (data) {
+      data.forEach(action => {
+        const view = (
+          <ul>
+            <li>{action.date}</li>
+            <li>{action.category}</li>
+            <li>{action.pull}</li>
+            <li>{action.push}</li>
+          </ul>
+        );
+        dataViews.push(view);
       });
     }
 
-    return <div>{usersViews}</div>;
+    return <div>{dataViews}</div>;
   }
 }
