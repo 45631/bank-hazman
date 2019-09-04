@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faAd } from "@fortawesome/free-solid-svg-icons";
+
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +67,8 @@ export class Home extends Component {
             </ul>
           </nav>
         </header>
-
+        <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon icon={faAd} />
         <div>{categoriesViews}</div>
       </div>
     );
