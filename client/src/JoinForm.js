@@ -38,7 +38,9 @@ export class JoinForm extends Component {
           value={this.state.name}
           onChange={this.onNameChange}
         />
-        <button onClick={this.submit}>submit</button>
+        <button type="button" className="btn btn-dark" onClick={this.submit}>
+          submit
+        </button>
       </div>
     );
   }
