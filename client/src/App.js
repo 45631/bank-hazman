@@ -7,6 +7,8 @@ import { Account } from "./Account";
 import { CategoryInfo } from "./CategoryInfo";
 import { JoinForm } from "./JoinForm";
 import { StatementForm } from "./StatementForm";
+import { About } from "./About";
+import { Contact } from "./Contact";
 
 const history = createBrowserHistory();
 
@@ -29,6 +31,12 @@ export class App extends Component {
           </Route>
           <Route path="/statementform">
             <StatementForm history={history} />
+          </Route>
+          <Route path="/about">
+            <About history={history} />
+          </Route>
+          <Route path="/contact">
+            <Contact history={history} />
           </Route>
         </Switch>
       </Router>
