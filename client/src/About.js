@@ -5,6 +5,11 @@ export class About extends Component {
     super(props);
     this.state = {};
   }
+  componentDidMount() {
+    fetch("http://localhost:3000/users").then(data =>
+      data.json().then(data => this.setState({ data: data }))
+    );
+  }
 
   render() {
     return (
@@ -33,9 +38,14 @@ export class About extends Component {
           אחד יכול למצוא את מקומו עפ"י החוזקות והחולשות האישיים שלו. לתשומת לב -
           מכירת שירותים בתמורה לתשלום בכסף "אמיתי" אסורה בבנק הזמן!
         </p>
+        <p>דף חשבון לדוגמא:</p>
+        <img />
         <hr />
         <h6>כיום בבנק הזמן:</h6>
-        <p>X משתמשים בתחום Y...</p>
+        <p>
+          <span>y</span> משתמשים ב<span> x </span>
+          תחומים
+        </p>
       </div>
     );
   }

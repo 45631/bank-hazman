@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Contact extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { value: "", name: "" };
     this.saveName = this.saveName.bind(this);
     this.comment = this.comment.bind(this);
   }
@@ -12,9 +12,7 @@ export class Contact extends Component {
   }
   comment() {
     const name = this.state.value;
-
-    if (name) {
-    }
+    this.setState({ name });
   }
 
   render() {
@@ -79,6 +77,9 @@ export class Contact extends Component {
                   שלח
                 </button>
               </form>
+              <p>
+                תודה<span> {this.state.name}, </span>תיכף חוזרים אליך
+              </p>
               <p className="card-text">
                 <small className="text-muted">
                   בלחיצה על "שלח" הנכם נותנים הסכמתכם כי פרטיכם ישמרו במאגרי

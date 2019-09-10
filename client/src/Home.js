@@ -9,6 +9,9 @@ export class Home extends Component {
     this.state = {};
     this.onCategoryClick = this.onCategoryClick.bind(this);
     this.toAccount = this.toAccount.bind(this);
+    this.toAbout = this.toAbout.bind(this);
+    this.toContact = this.toContact.bind(this);
+    this.toJoinForm = this.toJoinForm.bind(this);
   }
 
   onCategoryClick(category) {
@@ -18,6 +21,15 @@ export class Home extends Component {
 
   toAccount() {
     this.props.history.push("/account");
+  }
+  toAbout() {
+    this.props.history.push("/about");
+  }
+  toContact() {
+    this.props.history.push("/contact");
+  }
+  toJoinForm() {
+    this.props.history.push("/joinForm");
   }
 
   render() {
@@ -61,9 +73,9 @@ export class Home extends Component {
 
             <ul>
               <li>בית</li>
-              <li>אודות</li>
-              <li>צור קשר</li>
-              <li>טופס הצטרפות</li>
+              <li onClick={this.toAbout}>אודות</li>
+              <li onClick={this.toContact}>צור קשר</li>
+              <li onClick={this.toJoinForm}>טופס הצטרפות</li>
             </ul>
           </nav>
         </header>
