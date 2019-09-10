@@ -62,22 +62,29 @@ export class Home extends Component {
     return (
       <div className="container">
         <header>
-          <nav>
-            <button
-              onClick={() => {
-                this.toAccount();
-              }}
-            >
-              לחשבון שלי
-            </button>
+          <ul className="nav nav-tabs">
+            <li className="nav-link active">בית</li>
+            <li className="nav-link " onClick={this.toAbout}>
+              אודות
+            </li>
 
-            <ul>
-              <li>בית</li>
-              <li onClick={this.toAbout}>אודות</li>
-              <li onClick={this.toContact}>צור קשר</li>
-              <li onClick={this.toJoinForm}>טופס הצטרפות</li>
-            </ul>
-          </nav>
+            <li className="nav-link " onClick={this.toContact}>
+              צור קשר
+            </li>
+            <li className="nav-link " onClick={this.toJoinForm}>
+              טופס הצטרפות
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="btn  btn-secondary btn-lg btn-block"
+            onClick={() => {
+              this.toAccount();
+            }}
+          >
+            לחשבון שלי
+          </button>
+          <h3 className="title">בנק הזמן</h3>
         </header>
         <FontAwesomeIcon icon={faCoffee} />
         <FontAwesomeIcon icon={faAd} />
