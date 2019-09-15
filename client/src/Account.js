@@ -19,17 +19,39 @@ export class Account extends Component {
     if (data) {
       data.forEach(action => {
         const view = (
-          <ul>
-            <li>{action.date}</li>
-            <li>{action.category}</li>
-            <li>{action.pull}</li>
-            <li>{action.push}</li>
-          </ul>
+          <tr>
+            <th scope="row">{action.date}</th>
+            <td>{action.category}</td>
+            <td>{action.pull}</td>
+            <td>{action.push}</td>
+          </tr>
         );
         dataViews.push(view);
       });
     }
 
-    return <div>{dataViews}</div>;
+    return (
+      <div>
+        <button
+          type="button"
+          class="btn  btn-secondary btn-lg btn-block"
+          onClick={() => {
+            this.toAccount();
+          }}
+        >
+          מעוניין להחליף את שם המשתמש שלי
+        </button>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">date</th>
+              <th scope="col">category</th>
+              <th scope="col">to</th>
+            </tr>
+          </thead>
+          <tbody>{dataViews}</tbody>
+        </table>
+      </div>
+    );
   }
 }

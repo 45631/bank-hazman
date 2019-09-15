@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faAd } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCoffee,
+  faAd,
+  faWater,
+  faBaby
+} from "@fortawesome/free-solid-svg-icons";
 
 export class Home extends Component {
   constructor(props) {
@@ -55,6 +60,7 @@ export class Home extends Component {
           }}
         >
           {category}
+          <FontAwesomeIcon icon={faAd} />
         </div>
       );
       categoriesViews.push(view);
@@ -86,8 +92,7 @@ export class Home extends Component {
           </button>
           <h3 className="title">בנק הזמן</h3>
         </header>
-        <FontAwesomeIcon icon={faCoffee} />
-        <FontAwesomeIcon icon={faAd} />
+
         <div>{categoriesViews}</div>
       </div>
     );

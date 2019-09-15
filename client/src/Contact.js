@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faMailBulk, faPen } from "@fortawesome/free-solid-svg-icons";
 
 export class Contact extends Component {
   constructor(props) {
@@ -19,13 +21,17 @@ export class Contact extends Component {
     return (
       <div className="container">
         <h3>כל הדרכים ליצור איתנו קשר</h3>
+
         <div className="card-deck">
           <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
+            <FontAwesomeIcon icon={faPhone} />
+
             <div className="card-body">
               <h5 className="card-title">התקשרו אלינו</h5>
               <p className="card-text">
-                נייד: 0527145631 נייח: 02-5712946 מרכזייה: 02-3333333
+                נייד: 0527145631 <br />
+                נייח: 02-5712946 <br />
+                מרכזייה: 02-3333333
               </p>
               <p className="card-text">
                 <small className="text-muted">
@@ -35,7 +41,8 @@ export class Contact extends Component {
             </div>
           </div>
           <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
+            <FontAwesomeIcon icon={faMailBulk} />
+
             <div className="card-body">
               <h5 className="card-title">שלחו לנו פניה בדוא"ל</h5>
               <p className="card-text">כתובת הדוא"ל שלנו: uvilevy@gmail.com</p>
@@ -45,7 +52,8 @@ export class Contact extends Component {
             </div>
           </div>
           <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
+            <FontAwesomeIcon icon={faPen} />
+
             <div className="card-body">
               <h5 className="card-title">השאירו פרטים</h5>
               <p className="card-text">
