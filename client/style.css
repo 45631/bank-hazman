@@ -21,8 +21,11 @@ header {
   width: 100%;
   text-align: center;
 }
-.btn-secondary {
-  margin-top: 30px;
+.pbtn {
+  justify-content: center;
+  margin: 50px;
+  height: 200px;
+  width: 200px;
 }
 .title {
   margin-top: 30px;
@@ -50,4 +53,43 @@ li:hover {
 .card {
   margin-top: 40px;
   text-align: center;
+}
+.form-group {
+  background-color: rgba(128, 128, 128, 0.37);
+  text-align: justify;
+  padding: 50px;
+  margin: auto;
+  font-weight: bold;
+  width: 500px;
+}
+.domain {
+  background-color: rgba(128, 128, 128, 0.37);
+  text-align: justify;
+  padding: 50px;
+  margin: auto;
+  font-weight: bold;
+  width: 500px;
+  line-height: 250%;
+}
+form-group {
+  display: flexbox;
+}
+.btn-primary {
+  margin-top: 30px;
+}
+
+.twobtn {
+  text-align: center;
+}
+button.btn-block {
+  margin-top: 30px;
+  width: 450px;
+}
+.logo {
+  height: 110px;
+  width: 280px;
+  margin-bottom: 20px;
+  float: right;
+  opacity: 0.7;
+  margin: 20px;
 }

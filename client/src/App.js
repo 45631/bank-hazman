@@ -3,6 +3,7 @@ import { Router, Switch, Route } from "react-router";
 import { createBrowserHistory } from "history";
 
 import { Home } from "./Home";
+import { PreAccount } from "./pre-account";
 import { Account } from "./Account";
 import { CategoryInfo } from "./CategoryInfo";
 import { JoinForm } from "./JoinForm";
@@ -19,6 +20,9 @@ export class App extends Component {
         <Switch>
           <Route exact path="/">
             <Home history={history} />
+          </Route>
+          <Route path="/pre-account">
+            <PreAccount />
           </Route>
           <Route path="/account">
             <Account />

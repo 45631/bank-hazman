@@ -32,15 +32,6 @@ export class Account extends Component {
 
     return (
       <div>
-        <button
-          type="button"
-          class="btn  btn-secondary btn-lg btn-block"
-          onClick={() => {
-            this.toAccount();
-          }}
-        >
-          מעוניין להחליף את שם המשתמש שלי
-        </button>
         <table class="table table-striped">
           <thead>
             <tr>

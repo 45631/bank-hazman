@@ -25,7 +25,7 @@ export class Home extends Component {
   }
 
   toAccount() {
-    this.props.history.push("/account");
+    this.props.history.push("/pre-account");
   }
   toAbout() {
     this.props.history.push("/about");
@@ -66,7 +66,8 @@ export class Home extends Component {
       categoriesViews.push(view);
     });
     return (
-      <div className="container">
+      <div>
+        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
         <header>
           <ul className="nav nav-tabs">
             <li className="nav-link active">בית</li>
@@ -92,8 +93,9 @@ export class Home extends Component {
           </button>
           <h3 className="title">בנק הזמן</h3>
         </header>
-
-        <div>{categoriesViews}</div>
+        <div className="container">
+          <div>{categoriesViews}</div>
+        </div>
       </div>
     );
   }

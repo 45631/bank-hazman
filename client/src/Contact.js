@@ -8,6 +8,7 @@ export class Contact extends Component {
     this.state = { value: "", name: "" };
     this.saveName = this.saveName.bind(this);
     this.comment = this.comment.bind(this);
+    this.put = this.put.bind(this);
   }
   saveName(event) {
     this.setState({ value: event.target.value });
@@ -16,6 +17,7 @@ export class Contact extends Component {
     const name = this.state.value;
     this.setState({ name });
   }
+  put() {}
 
   render() {
     return (
@@ -97,6 +99,10 @@ export class Contact extends Component {
             </div>
           </div>
         </div>
+        <h5>בעיות נפוצות:</h5>
+        <ul>
+          <li onClick={this.put}>מעוניין להחליף את שם המשתמש שלי</li>
+        </ul>
       </div>
     );
   }
