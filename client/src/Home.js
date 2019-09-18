@@ -84,16 +84,19 @@ export class Home extends Component {
           </ul>
           <button
             type="button"
-            class="btn  btn-secondary btn-lg btn-block"
+            className="btn  btn-secondary btn-lg btn-block"
             onClick={() => {
               this.toAccount();
             }}
           >
             לחשבון שלי
           </button>
-          <h3 className="title">בנק הזמן</h3>
+          <div className="clockimg"></div>
+          <div className="clockimg"></div>
         </header>
         <div className="container">
+          {" "}
+          <h3> תחומים בבנק הזמן</h3>
           <div>{categoriesViews}</div>
         </div>
       </div>

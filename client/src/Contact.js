@@ -8,17 +8,31 @@ export class Contact extends Component {
     this.state = { value: "", name: "" };
     this.saveName = this.saveName.bind(this);
     this.comment = this.comment.bind(this);
+    this.onNameChange = this.onNameChange.bind(this);
     this.put = this.put.bind(this);
     this.delete = this.delete.bind(this);
+    this.toHome = this.toHome.bind(this);
+    this.toAccount = this.toAccount.bind(this);
+    this.toAbout = this.toAbout.bind(this);
+    this.toContact = this.toContact.bind(this);
+    this.toJoinForm = this.toJoinForm.bind(this);
   }
   saveName(event) {
     this.setState({ value: event.target.value });
   }
   comment() {
     const name = this.state.value;
-    this.setState({ name });
+    this.setState({});
+  }
+  onNameChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({ [name]: value });
   }
   put() {
+    console.log("put");
     const data = {
       oldName: this.state.oldName,
       newName: this.state.newName
@@ -47,97 +61,159 @@ export class Contact extends Component {
       console.log("delete!");
     });
   }
+  toHome() {
+    this.props.history.push("/");
+  }
+  toAccount() {
+    this.props.history.push("/pre-account");
+  }
+  toAbout() {
+    this.props.history.push("/about");
+  }
+  toContact() {
+    this.props.history.push("/contact");
+  }
+  toJoinForm() {
+    this.props.history.push("/joinForm");
+  }
 
   render() {
     return (
-      <div className="container">
-        <h3>כל הדרכים ליצור איתנו קשר</h3>
+      <div>
+        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
+        <header>
+          <ul className="nav nav-tabs">
+            <li className="nav-link " onClick={this.toHome}>
+              בית
+            </li>
+            <li className="nav-link " onClick={this.toAbout}>
+              אודות
+            </li>
 
-        <div className="card-deck">
-          <div className="card">
-            <FontAwesomeIcon icon={faPhone} />
+            <li className="nav-link active" onClick={this.toContact}>
+              צור קשר
+            </li>
+            <li className="nav-link " onClick={this.toJoinForm}>
+              טופס הצטרפות
+            </li>
+          </ul>
+          <button
+            type="button"
+            className="btn  btn-secondary btn-lg btn-block"
+            onClick={() => {
+              this.toAccount();
+            }}
+          >
+            לחשבון שלי
+          </button>
+          <div className="clockimg"></div>
+          <div className="clockimg"></div>
+        </header>
+        <div className="container">
+          <h3>כל הדרכים ליצור איתנו קשר</h3>
+          <div className="card-deck">
+            <div className="card">
+              <FontAwesomeIcon icon={faPhone} />
 
-            <div className="card-body">
-              <h5 className="card-title">התקשרו אלינו</h5>
-              <p className="card-text">
-                נייד: 0527145631 <br />
-                נייח: 02-5712946 <br />
-                מרכזייה: 02-3333333
-              </p>
-              <p className="card-text">
-                <small className="text-muted">
-                  במידה ואין מענה אנא השאירו הודעה ונחזור אליכם בהקדם
-                </small>
-              </p>
+              <div className="card-body">
+                <h5 className="card-title">התקשרו אלינו</h5>
+                <p className="card-text">
+                  נייד: 0527145631 <br />
+                  נייח: 02-5712946 <br />
+                  מרכזייה: 02-3333333
+                </p>
+                <p className="card-text">
+                  <small className="text-muted">
+                    במידה ואין מענה אנא השאירו הודעה ונחזור אליכם בהקדם
+                  </small>
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <FontAwesomeIcon icon={faMailBulk} />
+
+              <div className="card-body">
+                <h5 className="card-title">שלחו לנו פניה בדוא"ל</h5>
+                <p className="card-text">
+                  כתובת הדוא"ל שלנו: uvilevy@gmail.com
+                </p>
+                <p className="card-text">
+                  <small className="text-muted">מענה בתוך שני ימי עסקים</small>
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <FontAwesomeIcon icon={faPen} />
+
+              <div className="card-body">
+                <h5 className="card-title">השאירו פרטים</h5>
+                <p className="card-text">
+                  תוכלו להשאיר פרטים כאן ונציגינו יחזרו אליכם בהקדם
+                </p>
+                <form>
+                  <label>
+                    שם
+                    <input
+                      type="text"
+                      name="name"
+                      value={this.state.value}
+                      onChange={this.saveName}
+                    />
+                  </label>
+                  <label>
+                    טלפון
+                    <input type="text" />
+                  </label>
+                  <label>
+                    כמה מילים על סיבת הפנייה:
+                    <textarea></textarea>
+                  </label>
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={this.comment}
+                  >
+                    שלח
+                  </button>
+                </form>
+                <p>
+                  תודה<span> {this.state.name}, </span>תיכף חוזרים אליך
+                </p>
+                <p className="card-text">
+                  <small className="text-muted">
+                    בלחיצה על "שלח" הנכם נותנים הסכמתכם כי פרטיכם ישמרו במאגרי
+                    המידע שלנו
+                  </small>
+                </p>
+              </div>
             </div>
           </div>
-          <div className="card">
-            <FontAwesomeIcon icon={faMailBulk} />
+          <div className="problems">
+            <h5>בעיות נפוצות:</h5>
 
-            <div className="card-body">
-              <h5 className="card-title">שלחו לנו פניה בדוא"ל</h5>
-              <p className="card-text">כתובת הדוא"ל שלנו: uvilevy@gmail.com</p>
-              <p className="card-text">
-                <small className="text-muted">מענה בתוך שני ימי עסקים</small>
-              </p>
-            </div>
-          </div>
-          <div className="card">
-            <FontAwesomeIcon icon={faPen} />
-
-            <div className="card-body">
-              <h5 className="card-title">השאירו פרטים</h5>
-              <p className="card-text">
-                תוכלו להשאיר פרטים כאן ונציגינו יחזרו אליכם בהקדם
-              </p>
+            <ul>
+              <li>מעוניין להחליף את שם המשתמש שלי</li>
+              <li>מעוניין למחוק את החשבון שלי</li>{" "}
               <form>
+                {" "}
                 <label>
-                  שם
+                  שם משתמש
                   <input
                     type="text"
                     name="name"
-                    value={this.state.value}
-                    onChange={this.saveName}
+                    value={this.state.name}
+                    onChange={this.onNameChange}
                   />
                 </label>
-                <label>
-                  טלפון
-                  <input type="text" />
-                </label>
-                <label>
-                  כמה מילים על סיבת הפנייה:
-                  <textarea></textarea>
-                </label>
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  onClick={this.comment}
-                >
-                  שלח
+                <button onClick={this.delete}>
+                  אין לי זמן להתנדב יותר. מחק אותי!
                 </button>
               </form>
-              <p>
-                תודה<span> {this.state.name}, </span>תיכף חוזרים אליך
-              </p>
-              <p className="card-text">
-                <small className="text-muted">
-                  בלחיצה על "שלח" הנכם נותנים הסכמתכם כי פרטיכם ישמרו במאגרי
-                  המידע שלנו
-                </small>
-              </p>
-            </div>
+              <li>מעוניין למשוך שעות אך אין לי יתרה בחשבון</li>
+              <li>לא מצליח להכנס לחשבון שלי</li>
+              <li>קבעתי עם מישהו שיוציא את הכלב שלי לטיול והוא לא הגיע</li>
+            </ul>
           </div>
-        </div>
-        <div className="problems">
-          <h5>בעיות נפוצות:</h5>
-
-          <ul>
-            <li onClick={this.put}>מעוניין להחליף את שם המשתמש שלי</li>
-            <li onClick={this.delete}>מעוניין למחוק את החשבון שלי</li>
-            <li>מעוניין למשוך שעות אך אין לי יתרה בחשבון</li>
-            <li>לא מצליח להכנס לחשבון שלי</li>
-            <li>קבעתי עם מישהו שיוציא את הכלב שלי לטיול והוא לא הגיע</li>
-          </ul>
         </div>
       </div>
     );
