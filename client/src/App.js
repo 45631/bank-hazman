@@ -22,10 +22,10 @@ export class App extends Component {
             <Home history={history} />
           </Route>
           <Route path="/pre-account">
-            <PreAccount />
+            <PreAccount history={history} />
           </Route>
           <Route path="/account">
-            <Account />
+            <Account history={history} />
           </Route>
           <Route path="/categoryInfo">
             <CategoryInfo history={history} />

@@ -50,7 +50,7 @@ export class StatementForm extends Component {
           <input
             type="text"
             name="toId"
-            value={this.state.to}
+            value={this.state.toId}
             onChange={this.statement}
           />
         </label>

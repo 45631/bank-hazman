@@ -14,12 +14,14 @@ export class PreAccount extends Component {
     super(props);
     this.state = {};
     this.login = this.login.bind(this);
+    this.toAccount = this.toAccount.bind(this);
+    this.ToStatementForm = this.ToStatementForm.bind(this);
   }
   login() {}
   toAccount() {
     this.props.history.push("/account");
   }
-  toAccount() {
+  ToStatementForm() {
     this.props.history.push("/statementForm");
   }
   render() {

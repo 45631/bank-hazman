@@ -9,6 +9,7 @@ export class Contact extends Component {
     this.saveName = this.saveName.bind(this);
     this.comment = this.comment.bind(this);
     this.put = this.put.bind(this);
+    this.delete = this.delete.bind(this);
   }
   saveName(event) {
     this.setState({ value: event.target.value });
@@ -17,7 +18,35 @@ export class Contact extends Component {
     const name = this.state.value;
     this.setState({ name });
   }
-  put() {}
+  put() {
+    const data = {
+      oldName: this.state.oldName,
+      newName: this.state.newName
+    };
+    fetch("http://localhost:3000/users", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(() => {
+      console.log("put!");
+    });
+  }
+  delete() {
+    const data = {
+      name: this.state.name
+    };
+    fetch("http://localhost:3000/users", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(() => {
+      console.log("delete!");
+    });
+  }
 
   render() {
     return (
@@ -99,10 +128,17 @@ export class Contact extends Component {
             </div>
           </div>
         </div>
-        <h5>בעיות נפוצות:</h5>
-        <ul>
-          <li onClick={this.put}>מעוניין להחליף את שם המשתמש שלי</li>
-        </ul>
+        <div className="problems">
+          <h5>בעיות נפוצות:</h5>
+
+          <ul>
+            <li onClick={this.put}>מעוניין להחליף את שם המשתמש שלי</li>
+            <li onClick={this.delete}>מעוניין למחוק את החשבון שלי</li>
+            <li>מעוניין למשוך שעות אך אין לי יתרה בחשבון</li>
+            <li>לא מצליח להכנס לחשבון שלי</li>
+            <li>קבעתי עם מישהו שיוציא את הכלב שלי לטיול והוא לא הגיע</li>
+          </ul>
+        </div>
       </div>
     );
   }
