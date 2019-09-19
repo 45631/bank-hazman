@@ -88,9 +88,10 @@ header {
 li:hover {
   background-color: azure;
 }
-.card {
+div.card {
   margin-top: 40px;
   text-align: center;
+  min-width: 250px;
 }
 .form-group {
   background-color: rgba(128, 128, 128, 0.37);
@@ -139,7 +140,8 @@ small.text-muted {
   margin-bottom: 10px;
 }
 .userDiv {
-  display: flex;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
 .userCard {
   height: 300px;
@@ -147,4 +149,11 @@ small.text-muted {
   margin: 50px;
   flex: 20px;
   justify-content: flex-start;
+  border: 1px solid black;
+}
+label {
+  display: block !important;
+}
+input {
+  float: left;
 }

@@ -55,8 +55,10 @@ router.post("/", function(req, res, next) {
   var newUser = new userModel({
     id: req.body.id,
     name: req.body.name,
+    userName: req.body.userName,
     mail: req.body.mail,
     phone: req.body.phone,
+    city: req.body.city,
     domain: arr
   });
   next();

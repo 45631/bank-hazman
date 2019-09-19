@@ -27,7 +27,8 @@ export class JoinForm extends Component {
       userName: this.state.userName,
       phone: this.state.phone,
       mail: this.state.mail,
-      city: this.state.city
+      city: this.state.city,
+      domain: this.state.domain
     };
     fetch("http://localhost:3000/users", {
       method: "POST",
@@ -121,16 +122,17 @@ export class JoinForm extends Component {
                 value={this.state.mail}
                 onChange={this.onNameChange}
               />
-              <label>
-                מס. טלפון
-                <input
-                  type="text"
-                  name="phone"
-                  value={this.state.phone}
-                  onChange={this.onNameChange}
-                />
-              </label>
             </label>
+            <label>
+              טלפון
+              <input
+                type="text"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.onNameChange}
+              />
+            </label>
+
             <label>
               עיר מגורים
               <input
@@ -222,7 +224,7 @@ export class JoinForm extends Component {
             className="btn btn-primary"
             onClick={this.submit}
           >
-            submit
+            שלח
           </button>
         </div>
       </div>

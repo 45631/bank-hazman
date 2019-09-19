@@ -25,7 +25,7 @@ export class RequestForm extends Component {
                 className="card-img-top"
               />
               <div className="card-body">
-                <p className="card-text">{action.name}</p>
+                <p className="card-text">{action.userName}</p>
                 <p className="card-text">{action.mail}</p>
                 <p className="card-text">{action.phone}</p>
               </div>
@@ -41,84 +41,93 @@ export class RequestForm extends Component {
     return (
       <div>
         <img className="logo" src={require("../assets/bank.jpg")} />{" "}
-        <h3>אני צריך עזרה ב:</h3>
-        <label>
-          <input
-            type="checkbox"
-            name="baby"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          שמרטפות
-          <br />
-          <input
-            type="checkbox"
-            name="tv"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          טכנולוגיה
-          <br />
-          <input
-            type="checkbox"
-            name="pen"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          כתיבה
-          <br />
-          <input
-            type="checkbox"
-            name="motorcycle"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          שליחויות
-          <br />
-          <input
-            type="checkbox"
-            name="cap"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          לימודי עזר
-          <br />
-          <input
-            type="checkbox"
-            name="dog"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          דוגיסיטר
-          <br />
-          <input
-            type="checkbox"
-            name="car"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          הסעות
-          <br />
-          <input
-            type="checkbox"
-            name="hamburger"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          בישולים
-          <br />
-          <input
-            type="checkbox"
-            name="tools"
-            checked={this.state.domain}
-            onChange={this.statement}
-          />
-          עבודות תחזוקה <br />
-        </label>
-        <button onClick={this.submit}>מי יכול לעזור לי?</button>
-        <div>
+        <div className="form-group">
+          <h3>אני זקוק לעזרה ב:</h3>
+          <label>
+            <input
+              type="checkbox"
+              name="baby"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            שמרטפות
+            <br />
+            <input
+              type="checkbox"
+              name="tv"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            טכנולוגיה
+            <br />
+            <input
+              type="checkbox"
+              name="pen"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            כתיבה
+            <br />
+            <input
+              type="checkbox"
+              name="motorcycle"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            שליחויות
+            <br />
+            <input
+              type="checkbox"
+              name="cap"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            לימודי עזר
+            <br />
+            <input
+              type="checkbox"
+              name="dog"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            דוגיסיטר
+            <br />
+            <input
+              type="checkbox"
+              name="car"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            הסעות
+            <br />
+            <input
+              type="checkbox"
+              name="hamburger"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            בישולים
+            <br />
+            <input
+              type="checkbox"
+              name="tools"
+              checked={this.state.domain}
+              onChange={this.statement}
+            />
+            עבודות תחזוקה <br />
+          </label>
+
+          <div>
+            {" "}
+            <button className="btn btn-primary" onClick={this.submit}>
+              מי יכול לעזור לי?
+            </button>
+          </div>
+        </div>
+        <div className="userDiv">
+          {" "}
           <p> נסה לפנות ל:</p>
-          <div className="userDiv">{this.state.result}</div>
+          {this.state.result}
         </div>
       </div>
     );
