@@ -139,7 +139,8 @@ export class CategoryInfo extends Component {
     content = Categories.find(ele => ele.name == categoryName);
 
     return (
-      <div>
+      <div className="categoryinfo">
+        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
         <p> {ReactHtmlParser(content.text)}</p>
       </div>
     );

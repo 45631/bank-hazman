@@ -32,6 +32,7 @@ export class Account extends Component {
 
     return (
       <div>
+        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
         <table class="table table-striped">
           <thead>
             <tr>

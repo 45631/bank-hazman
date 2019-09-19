@@ -10,6 +10,7 @@ import { JoinForm } from "./JoinForm";
 import { StatementForm } from "./StatementForm";
 import { About } from "./About";
 import { Contact } from "./Contact";
+import { RequestForm } from "./RequestForm";
 
 const history = createBrowserHistory();
 
@@ -41,6 +42,9 @@ export class App extends Component {
           </Route>
           <Route path="/contact">
             <Contact history={history} />
+          </Route>
+          <Route path="/requestForm">
+            <RequestForm history={history} />
           </Route>
         </Switch>
       </Router>

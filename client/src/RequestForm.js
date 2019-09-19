@@ -1,66 +1,47 @@
 import React, { Component } from "react";
 
-export class StatementForm extends Component {
+export class RequestForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.statement = this.statement.bind(this);
+    this.state = { data: [], result: [] };
     this.submit = this.submit.bind(this);
   }
-  statement(event) {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({ [name]: value });
+  componentDidMount() {
+    fetch("http://localhost:3000/users").then(data =>
+      data.json().then(data => this.setState({ data: data }))
+    );
   }
   submit() {
-    const data = {
-      userId: this.state.userId,
-      to: this.state.toId,
-      date: this.state.date,
-      pull: this.state.pull,
-      push: this.state.push
-    };
-    fetch("http://localhost:3000/account", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(() => {
-      console.log("save!");
-    });
+    const data = this.state.data;
+    if (data) {
+      console.log(data);
+      const result = [];
+      data.forEach(action => {
+        if (action.domain[0]) {
+          const view = (
+            <div className="card userCard">
+              <img
+                src={require("../assets/placeholder.png")}
+                className="card-img-top"
+              />
+              <div className="card-body">
+                <p className="card-text">{action.name}</p>
+                <p className="card-text">{action.mail}</p>
+                <p className="card-text">{action.phone}</p>
+              </div>
+            </div>
+          );
+          result.push(view);
+          this.setState({ result: result });
+        }
+      });
+    }
   }
   render() {
     return (
       <div>
         <img className="logo" src={require("../assets/bank.jpg")} />{" "}
-        <h3>דיווח על הפקדה / משיכה</h3>
-        <label>
-          תאריך
-          <input
-            type="date"
-            name="date"
-            value={this.state.date}
-            onChange={this.statement}
-          />
-        </label>
-        <label>
-          משתמש שותף
-          <input
-            type="text"
-            name="toId"
-            value={this.state.toId}
-            onChange={this.statement}
-          />
-        </label>
-        <label>
-          <select value={this.state.value} onChange={this.statement}>
-            <option value="pull">משיכה</option>
-            <option value="push">הפקדה</option>
-          </select>
-        </label>
+        <h3>אני צריך עזרה ב:</h3>
         <label>
           <input
             type="checkbox"
@@ -134,7 +115,11 @@ export class StatementForm extends Component {
           />
           עבודות תחזוקה <br />
         </label>
-        <button onClick={this.submit}>דווח</button>
+        <button onClick={this.submit}>מי יכול לעזור לי?</button>
+        <div>
+          <p> נסה לפנות ל:</p>
+          <div className="userDiv">{this.state.result}</div>
+        </div>
       </div>
     );
   }
