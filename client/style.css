@@ -4,14 +4,33 @@ body {
   position: relative;
   min-height: 700px;
 }
-p {
-  text-align: center;
-}
 
 .container {
   text-align: center;
   margin-top: 20px;
 }
+.aboutCon {
+  display: flex;
+  text-align: center;
+}
+.aboutTxt {
+  width: 60%;
+  text-align: right;
+  margin: 40px;
+  justify-content: flex-start;
+  height: 500px;
+}
+.aboutImgDiv {
+  justify-content: flex-start;
+  width: 30%;
+  margin-right: 30px;
+  height: 500px;
+}
+.aboutImg {
+  height: 400px;
+  margin-top: 50px;
+}
+
 header {
   width: 100%;
   text-align: center;
@@ -31,13 +50,23 @@ header {
   height: 200px;
   width: 200px;
 }
-.categoryinfo {
+.categoryDiv {
   background-image: url("./assets/home.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
   min-height: 700px;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+}
+.categoryinfo {
+  text-align: right;
+  padding: 100px;
+  line-height: 40px;
+  z-index: -1;
+  width: 70%;
+  margin-top: 100px;
 }
 .nav-tabs {
   font-size: 20px;
@@ -65,12 +94,13 @@ li:hover {
 }
 .form-group {
   background-color: rgba(128, 128, 128, 0.37);
-  text-align: justify;
+  text-align: right;
   padding: 50px;
   margin: auto;
   font-weight: bold;
   width: 500px;
 }
+
 .domain {
   background-color: rgba(128, 128, 128, 0.37);
   text-align: justify;
