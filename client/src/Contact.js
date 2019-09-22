@@ -63,7 +63,7 @@ export class Contact extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header history={this.props.history} />
         <div className="container">
           <h3>כל הדרכים ליצור איתנו קשר</h3>
           <div className="card-deck">

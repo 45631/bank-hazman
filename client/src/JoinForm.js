@@ -41,7 +41,7 @@ export class JoinForm extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header history={this.props.history} />
         <div className="container">
           <h3>ברוך הבא לבנק הזמן</h3>
           <div className="form-group">

@@ -52,9 +52,8 @@ export class Home extends Component {
     });
     return (
       <div>
-        <Header></Header>{" "}
+        <Header history={this.props.history} />
         <div className="container">
-          {" "}
           <h3> תחומים בבנק הזמן</h3>
           <div>{categoriesViews}</div>
         </div>

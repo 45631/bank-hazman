@@ -18,7 +18,7 @@ export class About extends Component {
   render() {
     return (
       <div>
-        <Header></Header>
+        <Header history={this.props.history} />
         <div className="container">
           <h2>מהו בנק הזמן?</h2>
           <div className="aboutCon">

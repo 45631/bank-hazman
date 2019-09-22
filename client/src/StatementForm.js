@@ -148,8 +148,10 @@ export class StatementForm extends Component {
               onChange={this.statement}
             />
             עבודות תחזוקה <br />
-          </label>
-          <button onClick={this.submit}>דווח</button>
+          </label>{" "}
+          <button className="btn btn-primary" onClick={this.submit}>
+            דווח
+          </button>
         </div>
       </div>
     );
