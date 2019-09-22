@@ -7,7 +7,8 @@ import {
   faCoffee,
   faAd,
   faWater,
-  faBaby
+  faBaby,
+  faTv
 } from "@fortawesome/free-solid-svg-icons";
 
 export class Home extends Component {
@@ -24,28 +25,29 @@ export class Home extends Component {
 
   render() {
     const categoreis = [
-      "baby",
-      "tv",
-      "pen",
-      "motorcycle",
-      "cap",
-      "dog",
-      "car",
-      "hamburger",
-      "tools"
+      { id: "baby", name: "שמרטפות", icon: faBaby },
+      { id: "tv", name: "עזרה טכנולוגית", icon: faTv }
+      // "tv",
+      // "pen",
+      // "motorcycle",
+      // "cap",
+      // "dog",
+      // "car",
+      // "hamburger",
+      // "tools"
     ];
     const categoriesViews = [];
     categoreis.forEach(category => {
       const view = (
         <div
-          key={category}
+          key={category.id}
           className="category"
           onClick={() => {
             this.onCategoryClick(category);
           }}
         >
-          {category}
-          <FontAwesomeIcon icon={faAd} />
+          {category.name}
+          <FontAwesomeIcon icon={category.icon} />
         </div>
       );
       categoriesViews.push(view);

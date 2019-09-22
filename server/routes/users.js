@@ -13,6 +13,15 @@ router.get("/", function(req, res, next) {
     res.send(mydata);
   });
 });
+router.post("/login", function(req, res, next) {
+  var userName = req.body.userName;
+  var password = req.body.password;
+  if (userName == "shula" && password == "1234") {
+    res.send({ userName: "shula", mail: "sh@hfhn" });
+  } else {
+    res.send({ err: "not found" });
+  }
+});
 router.post("/", function(req, res, next) {
   var arr = [];
   var baby = req.body.baby;
