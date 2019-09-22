@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 export class JoinForm extends Component {
   constructor(props) {
@@ -6,11 +8,6 @@ export class JoinForm extends Component {
     this.state = {};
     this.onNameChange = this.onNameChange.bind(this);
     this.submit = this.submit.bind(this);
-    this.toHome = this.toHome.bind(this);
-    this.toAccount = this.toAccount.bind(this);
-    this.toAbout = this.toAbout.bind(this);
-    this.toContact = this.toContact.bind(this);
-    this.toJoinForm = this.toJoinForm.bind(this);
   }
 
   onNameChange(event) {
@@ -40,54 +37,11 @@ export class JoinForm extends Component {
       console.log("save!");
     });
   }
-  toHome() {
-    this.props.history.push("/");
-  }
-  toAccount() {
-    this.props.history.push("/pre-account");
-  }
-  toAbout() {
-    this.props.history.push("/about");
-  }
-  toContact() {
-    this.props.history.push("/contact");
-  }
-  toJoinForm() {
-    this.props.history.push("/joinForm");
-  }
 
   render() {
     return (
       <div>
-        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
-        <header>
-          <ul className="nav nav-tabs">
-            <li className="nav-link " onClick={this.toHome}>
-              בית
-            </li>
-            <li className="nav-link " onClick={this.toAbout}>
-              אודות
-            </li>
-
-            <li className="nav-link " onClick={this.toContact}>
-              צור קשר
-            </li>
-            <li className="nav-link active" onClick={this.toJoinForm}>
-              טופס הצטרפות
-            </li>
-          </ul>
-          <button
-            type="button"
-            className="btn  btn-secondary btn-lg btn-block"
-            onClick={() => {
-              this.toAccount();
-            }}
-          >
-            לחשבון שלי
-          </button>
-          <div className="clockimg"></div>
-          <div className="clockimg"></div>
-        </header>
+        <Header />
         <div className="container">
           <h3>ברוך הבא לבנק הזמן</h3>
           <div className="form-group">
@@ -227,6 +181,7 @@ export class JoinForm extends Component {
             שלח
           </button>
         </div>
+        <Footer />
       </div>
     );
   }

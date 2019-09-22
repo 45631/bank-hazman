@@ -11,6 +11,7 @@ import { StatementForm } from "./StatementForm";
 import { About } from "./About";
 import { Contact } from "./Contact";
 import { RequestForm } from "./RequestForm";
+import { Header } from "./header";
 
 const history = createBrowserHistory();
 

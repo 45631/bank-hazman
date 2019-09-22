@@ -22,7 +22,7 @@ export class Account extends Component {
           <tr>
             <th scope="row">{action.date}</th>
             <td>{action.category}</td>
-            <td>{action.pull}</td>
+            <td>{action.to}</td>
             <td>{action.push}</td>
           </tr>
         );
@@ -36,9 +36,9 @@ export class Account extends Component {
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">date</th>
-              <th scope="col">category</th>
-              <th scope="col">to</th>
+              <th scope="col">תאריך</th>
+              <th scope="col">בתחום</th>
+              <th scope="col">משתמש שותף</th>
             </tr>
           </thead>
           <tbody>{dataViews}</tbody>

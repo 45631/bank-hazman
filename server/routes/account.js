@@ -15,7 +15,7 @@ router.get("/", function(req, res, next) {
 });
 router.post("/", function(req, res, next) {
   const newAction = new userAccount({
-    userId: req.body.userid,
+    userId: req.body.userId,
     date: req.body.date,
     category: req.body.category,
     to: req.body.toId,

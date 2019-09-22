@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 export class About extends Component {
   constructor(props) {
@@ -6,65 +8,17 @@ export class About extends Component {
     this.state = {
       count: 0
     };
-    this.toAccount = this.toAccount.bind(this);
-    this.toAbout = this.toAbout.bind(this);
-    this.toContact = this.toContact.bind(this);
-    this.toJoinForm = this.toJoinForm.bind(this);
-    this.toHome = this.toHome.bind(this);
   }
   componentDidMount() {
     fetch("http://localhost:3000/users").then(data =>
       data.json().then(data => this.setState({ count: data.length }))
     );
   }
-  toHome() {
-    this.props.history.push("/");
-  }
-  toAccount() {
-    this.props.history.push("/pre-account");
-  }
-  toAbout() {
-    this.props.history.push("/about");
-  }
-  toContact() {
-    this.props.history.push("/contact");
-  }
-  toJoinForm() {
-    this.props.history.push("/joinForm");
-  }
 
   render() {
     return (
       <div>
-        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
-        <header>
-          <ul className="nav nav-tabs">
-            <li className="nav-link " onClick={this.toHome}>
-              בית
-            </li>
-            <li className="nav-link active" onClick={this.toAbout}>
-              אודות
-            </li>
-
-            <li className="nav-link " onClick={this.toContact}>
-              צור קשר
-            </li>
-            <li className="nav-link " onClick={this.toJoinForm}>
-              טופס הצטרפות
-            </li>
-          </ul>
-          <button
-            type="button"
-            className="btn  btn-secondary btn-lg btn-block"
-            onClick={() => {
-              this.toAccount();
-            }}
-          >
-            לחשבון שלי
-          </button>
-          <div className="clockimg"></div>
-          <div className="clockimg"></div>
-        </header>
+        <Header></Header>
         <div className="container">
           <h2>מהו בנק הזמן?</h2>
           <div className="aboutCon">
@@ -122,6 +76,7 @@ export class About extends Component {
             תחומים
           </p>{" "}
         </div>
+        <Footer />
       </div>
     );
   }

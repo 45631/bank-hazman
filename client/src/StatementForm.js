@@ -17,7 +17,7 @@ export class StatementForm extends Component {
   submit() {
     const data = {
       userId: this.state.userId,
-      to: this.state.toId,
+      toId: this.state.toId,
       date: this.state.date,
       pull: this.state.pull,
       push: this.state.push
@@ -78,7 +78,7 @@ export class StatementForm extends Component {
           <p>בתחום:</p>
           <label>
             <input
-              type="checkbox"
+              type="radio"
               name="baby"
               checked={this.state.domain}
               onChange={this.statement}
@@ -86,7 +86,7 @@ export class StatementForm extends Component {
             שמרטפות
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="tv"
               checked={this.state.domain}
               onChange={this.statement}
@@ -94,7 +94,7 @@ export class StatementForm extends Component {
             טכנולוגיה
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="pen"
               checked={this.state.domain}
               onChange={this.statement}
@@ -102,7 +102,7 @@ export class StatementForm extends Component {
             כתיבה
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="motorcycle"
               checked={this.state.domain}
               onChange={this.statement}
@@ -110,7 +110,7 @@ export class StatementForm extends Component {
             שליחויות
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="cap"
               checked={this.state.domain}
               onChange={this.statement}
@@ -118,7 +118,7 @@ export class StatementForm extends Component {
             לימודי עזר
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="dog"
               checked={this.state.domain}
               onChange={this.statement}
@@ -126,7 +126,7 @@ export class StatementForm extends Component {
             דוגיסיטר
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="car"
               checked={this.state.domain}
               onChange={this.statement}
@@ -134,7 +134,7 @@ export class StatementForm extends Component {
             הסעות
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="hamburger"
               checked={this.state.domain}
               onChange={this.statement}
@@ -142,7 +142,7 @@ export class StatementForm extends Component {
             בישולים
             <br />
             <input
-              type="checkbox"
+              type="radio"
               name="tools"
               checked={this.state.domain}
               onChange={this.statement}

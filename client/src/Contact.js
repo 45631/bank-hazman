@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Header } from "./header";
+import { Footer } from "./footer";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faMailBulk, faPen } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,11 +14,6 @@ export class Contact extends Component {
     this.onNameChange = this.onNameChange.bind(this);
     this.put = this.put.bind(this);
     this.delete = this.delete.bind(this);
-    this.toHome = this.toHome.bind(this);
-    this.toAccount = this.toAccount.bind(this);
-    this.toAbout = this.toAbout.bind(this);
-    this.toContact = this.toContact.bind(this);
-    this.toJoinForm = this.toJoinForm.bind(this);
   }
   saveName(event) {
     this.setState({ value: event.target.value });
@@ -61,54 +59,11 @@ export class Contact extends Component {
       console.log("delete!");
     });
   }
-  toHome() {
-    this.props.history.push("/");
-  }
-  toAccount() {
-    this.props.history.push("/pre-account");
-  }
-  toAbout() {
-    this.props.history.push("/about");
-  }
-  toContact() {
-    this.props.history.push("/contact");
-  }
-  toJoinForm() {
-    this.props.history.push("/joinForm");
-  }
 
   render() {
     return (
       <div>
-        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
-        <header>
-          <ul className="nav nav-tabs">
-            <li className="nav-link " onClick={this.toHome}>
-              בית
-            </li>
-            <li className="nav-link " onClick={this.toAbout}>
-              אודות
-            </li>
-
-            <li className="nav-link active" onClick={this.toContact}>
-              צור קשר
-            </li>
-            <li className="nav-link " onClick={this.toJoinForm}>
-              טופס הצטרפות
-            </li>
-          </ul>
-          <button
-            type="button"
-            className="btn  btn-secondary btn-lg btn-block"
-            onClick={() => {
-              this.toAccount();
-            }}
-          >
-            לחשבון שלי
-          </button>
-          <div className="clockimg"></div>
-          <div className="clockimg"></div>
-        </header>
+        <Header />
         <div className="container">
           <h3>כל הדרכים ליצור איתנו קשר</h3>
           <div className="card-deck">
@@ -215,6 +170,7 @@ export class Contact extends Component {
             </ul>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
