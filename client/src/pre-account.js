@@ -39,7 +39,7 @@ export class PreAccount extends Component {
       .then(response => response.json())
       .then(user => {
         if (user.err) {
-          this.setState({ err: true });
+          this.setState({ err: true, user: null });
         } else {
           this.setState({ user });
         }
@@ -62,7 +62,7 @@ export class PreAccount extends Component {
         <div className="container">
           <h3>התחבר</h3>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email </label>
+            <label htmlFor="exampleInputEmail1">שם משתמש </label>
             <input
               name="userName"
               onChange={this.onInputValueChange}
@@ -73,17 +73,14 @@ export class PreAccount extends Component {
               aria-describedby="emailHelp"
               placeholder="הקלד כתובת "
             />
-            <small id="emailHelp" className="form-text text-muted">
-              לעולם לא נשתף את הדוא"ל שלך עם אף אחד אחר.
-            </small>
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1">שם משתמש</label>
+            <label htmlFor="exampleInputPassword1">סיסמא </label>
             <input
               name="password"
               onChange={this.onInputValueChange}
               value={this.state.password}
-              type="text"
+              type="password"
               className="form-control"
               id="exampleInputPassword1"
             />

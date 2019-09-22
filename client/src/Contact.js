@@ -8,15 +8,16 @@ import { faPhone, faMailBulk, faPen } from "@fortawesome/free-solid-svg-icons";
 export class Contact extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", name: "" };
+    this.state = { value: "", name: "", changeName: false };
     this.saveName = this.saveName.bind(this);
     this.comment = this.comment.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
     this.put = this.put.bind(this);
-    this.delete = this.delete.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+    this.showChangeName = this.showChangeName.bind(this);
   }
   saveName(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ name: event.target.value });
   }
   comment() {
     const name = this.state.value;
@@ -28,6 +29,9 @@ export class Contact extends Component {
     const name = target.name;
 
     this.setState({ [name]: value });
+  }
+  showChangeName() {
+    this.setState({ changeName: true });
   }
   put() {
     console.log("put");
@@ -45,16 +49,12 @@ export class Contact extends Component {
       console.log("put!");
     });
   }
-  delete() {
+  deleteUser() {
     const data = {
       name: this.state.name
     };
     fetch("http://localhost:3000/users", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      method: "DELETE"
     }).then(() => {
       console.log("delete!");
     });
@@ -111,7 +111,7 @@ export class Contact extends Component {
                     <input
                       type="text"
                       name="name"
-                      value={this.state.value}
+                      value={this.state.name}
                       onChange={this.saveName}
                     />
                   </label>
@@ -147,10 +147,12 @@ export class Contact extends Component {
             <h5>בעיות נפוצות:</h5>
 
             <ul>
-              <li>מעוניין להחליף את שם המשתמש שלי</li>
-              <li>מעוניין למחוק את החשבון שלי</li>{" "}
+              <li onClick={this.showChangeName}>
+                מעוניין להחליף את שם המשתמש שלי
+              </li>
+              {this.state.changeName && <p>תיכף נעזור לך</p>}
+              <li>מעוניין למחוק את החשבון שלי</li>
               <form>
-                {" "}
                 <label>
                   שם משתמש
                   <input
@@ -160,7 +162,7 @@ export class Contact extends Component {
                     onChange={this.onNameChange}
                   />
                 </label>
-                <button onClick={this.delete}>
+                <button onClick={this.deleteUser}>
                   אין לי זמן להתנדב יותר. מחק אותי!
                 </button>
               </form>

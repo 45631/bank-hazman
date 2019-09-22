@@ -5,17 +5,42 @@ import { Footer } from "./footer";
 export class JoinForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: "",
+      domain: [
+        // "עבודות תחזוקה",
+        // "בישולים",
+        // "הסעות",
+        // "דוגיסיטר",
+        // "לימודי עזר",
+        // "שליחויות",
+        // "כתיבה",
+        // "עזרה טכנולוגית",
+        // "שמרטפות"
+      ]
+    };
     this.onNameChange = this.onNameChange.bind(this);
     this.submit = this.submit.bind(this);
   }
 
   onNameChange(event) {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({ [name]: value });
+    if (target.type === "checkbox") {
+      const name = target.name;
+      let domain = [...this.state.domain];
+      if (target.checked) {
+        domain.push(name);
+      } else {
+        domain = this.state.domain.filter(d => {
+          d !== name;
+        });
+      }
+      this.setState({ domain });
+    } else {
+      const name = target.name;
+      const value = target.value;
+      this.setState({ [name]: value });
+    }
   }
 
   submit() {
@@ -34,6 +59,7 @@ export class JoinForm extends Component {
       },
       body: JSON.stringify(data)
     }).then(() => {
+      this.setState({ name: "" });
       console.log("save!");
     });
   }
@@ -103,7 +129,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="baby"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("baby")}
                 onChange={this.onNameChange}
               />
               שמרטפות
@@ -111,7 +137,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="tv"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("tv")}
                 onChange={this.onNameChange}
               />
               טכנולוגיה
@@ -119,7 +145,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="pen"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("pen")}
                 onChange={this.onNameChange}
               />
               כתיבה
@@ -127,7 +153,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="motorcycle"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("motorcycle")}
                 onChange={this.onNameChange}
               />
               שליחויות
@@ -135,7 +161,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="cap"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("cap")}
                 onChange={this.onNameChange}
               />
               לימודי עזר
@@ -143,7 +169,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="dog"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("dog")}
                 onChange={this.onNameChange}
               />
               דוגיסיטר
@@ -151,7 +177,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="car"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("car")}
                 onChange={this.onNameChange}
               />
               הסעות
@@ -159,7 +185,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="hamburger"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("hamburger")}
                 onChange={this.onNameChange}
               />
               בישולים
@@ -167,7 +193,7 @@ export class JoinForm extends Component {
               <input
                 type="checkbox"
                 name="tools"
-                checked={this.state.domain}
+                checked={this.state.domain.includes("tools")}
                 onChange={this.onNameChange}
               />
               עבודות תחזוקה <br />

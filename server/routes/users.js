@@ -68,7 +68,7 @@ router.post("/", function(req, res, next) {
     mail: req.body.mail,
     phone: req.body.phone,
     city: req.body.city,
-    domain: arr
+    domain: req.body.domain
   });
   next();
   newUser.save().then(() => console.log("save in db"));
