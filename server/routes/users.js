@@ -22,6 +22,17 @@ router.post("/login", function(req, res, next) {
     res.send({ err: "not found" });
   }
 });
+router.post("/search", function(req, res, next) {
+  var domain = req.body.domain;
+  userModel.find({}, function(err, users) {
+    if (err) {
+      res.send(err);
+    }
+    const filteredUsers = users.filter(user => user.domain.includes(domain));
+    var mydata = JSON.stringify(filteredUsers);
+    res.send(mydata);
+  });
+});
 router.post("/", function(req, res, next) {
   var arr = [];
   var baby = req.body.baby;

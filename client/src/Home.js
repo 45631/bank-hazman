@@ -43,7 +43,7 @@ export class Home extends Component {
           key={category.id}
           className="category"
           onClick={() => {
-            this.onCategoryClick(category);
+            this.onCategoryClick(category.id);
           }}
         >
           {category.name}
