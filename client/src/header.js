@@ -35,7 +35,7 @@ export class Header extends Component {
         <header>
           <img className="logo" src={require("../assets/bank.jpg")} />{" "}
           <ul className="nav nav-tabs">
-            <li className="nav-link active" onClick={this.toHome}>
+            <li className="nav-link " onClick={this.toHome}>
               בית
             </li>
             <li className="nav-link " onClick={this.toAbout}>

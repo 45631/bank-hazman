@@ -3,24 +3,46 @@ import React, { Component } from "react";
 export class StatementForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.statement = this.statement.bind(this);
+    this.state = { date: "", domain: "", traffic: "", Reference: false };
     this.submit = this.submit.bind(this);
+    this.onCheck = this.onCheck.bind(this);
+    this.onCheckTraffic = this.onCheckTraffic.bind(this);
   }
-  statement(event) {
+  onCheckTraffic(event) {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-
-    this.setState({ [name]: value });
+    let traffic;
+    if (target.checked) {
+      traffic = name;
+    } else {
+      traffic = "";
+    }
+    this.setState({ traffic });
   }
+  onCheck(event) {
+    const target = event.target;
+    if (target.type === "checkbox") {
+      const name = target.name;
+      let domain = [...this.state.domain];
+      if (target.checked) {
+        // domain.push(name);
+        domain = name;
+      } else {
+        domain = "";
+      }
+      this.setState({ domain });
+    } else {
+      const name = target.name;
+      const value = target.value;
+      this.setState({ [name]: value });
+    }
+  }
+
   submit() {
     const data = {
-      userId: this.state.userId,
-      toId: this.state.toId,
       date: this.state.date,
-      pull: this.state.pull,
-      push: this.state.push
+      domain: this.state.domain,
+      traffic: this.state.traffic
     };
     fetch("http://localhost:3000/account", {
       method: "POST",
@@ -30,6 +52,7 @@ export class StatementForm extends Component {
       body: JSON.stringify(data)
     }).then(() => {
       console.log("save!");
+      this.setState({ Reference: true });
     });
   }
   render() {
@@ -37,121 +60,116 @@ export class StatementForm extends Component {
       <div>
         <img className="logo" src={require("../assets/bank.jpg")} />{" "}
         <div className="form-group">
-          <h3>דיווח על הפקדה / משיכה</h3>
+          <h3>דיווח על הפקדה </h3>
           <label>
             תאריך
             <input
               type="date"
               name="date"
               value={this.state.date}
-              onChange={this.statement}
-            />
-          </label>
-          <label>
-            משתמש שותף
-            <input
-              type="text"
-              name="toId"
-              value={this.state.toId}
-              onChange={this.statement}
+              onChange={this.onCheck}
             />
           </label>
           <label>
             <input
-              type="radio"
-              name="name"
-              value={this.state.value}
-              onChange={this.statement}
-            />
-            משיכה
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="name"
-              value={this.state.value}
-              onChange={this.statement}
+              type="checkbox"
+              name="הפקדה"
+              checked={this.state.traffic === "הפקדה"}
+              onChange={this.onCheckTraffic}
             />
             הפקדה
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="משיכה"
+              checked={this.state.traffic === "משיכה"}
+              onChange={this.onCheckTraffic}
+            />
+            משיכה
           </label>
           <br />
           <p>בתחום:</p>
           <label>
             <input
-              type="radio"
-              name="baby"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="שמרטפות"
+              checked={this.state.domain === "שמרטפות"}
+              onChange={this.onCheck}
             />
             שמרטפות
             <br />
             <input
-              type="radio"
-              name="tv"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="טכנולוגיה"
+              checked={this.state.domain === "טכנולוגיה"}
+              onChange={this.onCheck}
             />
             טכנולוגיה
             <br />
             <input
-              type="radio"
-              name="pen"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="כתיבה"
+              checked={this.state.domain === "כתיבה"}
+              onChange={this.onCheck}
             />
             כתיבה
             <br />
             <input
-              type="radio"
-              name="motorcycle"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="שליחויות"
+              checked={this.state.domain === "שליחויות"}
+              onChange={this.onCheck}
             />
             שליחויות
             <br />
             <input
-              type="radio"
-              name="cap"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="לימודי עזר"
+              checked={this.state.domain === "לימודי עזר"}
+              onChange={this.onCheck}
             />
             לימודי עזר
             <br />
             <input
-              type="radio"
-              name="dog"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="דוגיסיטר"
+              checked={this.state.domain === "דוגיסיטר"}
+              onChange={this.onCheck}
             />
             דוגיסיטר
             <br />
             <input
-              type="radio"
-              name="car"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="הסעות"
+              checked={this.state.domain === "הסעות"}
+              onChange={this.onCheck}
             />
             הסעות
             <br />
             <input
-              type="radio"
-              name="hamburger"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="בישול"
+              checked={this.state.domain === "בישול"}
+              onChange={this.onCheck}
             />
             בישולים
             <br />
             <input
-              type="radio"
-              name="tools"
-              checked={this.state.domain}
-              onChange={this.statement}
+              type="checkbox"
+              name="עבודות תחזוקה"
+              checked={this.state.domain === "עבודות תחזוקה"}
+              onChange={this.onCheck}
             />
             עבודות תחזוקה <br />
-          </label>{" "}
+          </label>
           <button className="btn btn-primary" onClick={this.submit}>
             דווח
-          </button>
+          </button>{" "}
+          {this.state.Reference && (
+            <p>דיווחת בהצלחה, כל הכבוד! המשך לשמור על סדר ברישומים</p>
+          )}
         </div>
       </div>
     );

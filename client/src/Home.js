@@ -4,11 +4,15 @@ import { Footer } from "./footer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCoffee,
-  faAd,
-  faWater,
   faBaby,
-  faTv
+  faTv,
+  faPen,
+  faMotorcycle,
+  faDog,
+  faCar,
+  faHamburger,
+  faTools,
+  faChalkboardTeacher
 } from "@fortawesome/free-solid-svg-icons";
 
 export class Home extends Component {
@@ -26,15 +30,18 @@ export class Home extends Component {
   render() {
     const categoreis = [
       { id: "baby", name: "שמרטפות", icon: faBaby },
-      { id: "tv", name: "עזרה טכנולוגית", icon: faTv }
-      // "tv",
-      // "pen",
-      // "motorcycle",
-      // "cap",
-      // "dog",
-      // "car",
-      // "hamburger",
-      // "tools"
+      { id: "tv", name: "עזרה טכנולוגית", icon: faTv },
+      { id: "pen", name: "כתיבה", icon: faPen },
+      { id: "motorcycle", name: "שליחויות", icon: faMotorcycle },
+      {
+        id: "ChalkboardTeacher",
+        name: "שיעורי עזר ",
+        icon: faChalkboardTeacher
+      },
+      { id: "dog", name: "דוגיסיטר ", icon: faDog },
+      { id: "car", name: "הסעות ", icon: faCar },
+      { id: "hamburger", name: "בישול ", icon: faHamburger },
+      { id: "tools", name: "עבודות תחזוקה ", icon: faTools }
     ];
     const categoriesViews = [];
     categoreis.forEach(category => {
@@ -47,6 +54,7 @@ export class Home extends Component {
           }}
         >
           {category.name}
+          <br />
           <FontAwesomeIcon icon={category.icon} />
         </div>
       );

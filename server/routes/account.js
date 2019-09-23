@@ -15,12 +15,9 @@ router.get("/", function(req, res, next) {
 });
 router.post("/", function(req, res, next) {
   const newAction = new userAccount({
-    userId: req.body.userId,
     date: req.body.date,
-    category: req.body.category,
-    to: req.body.toId,
-    pull: req.body.pull,
-    push: req.body.push
+    category: req.body.domain,
+    traffic: req.body.traffic
   });
   next();
   newAction.save().then(() => console.log("save in db"));

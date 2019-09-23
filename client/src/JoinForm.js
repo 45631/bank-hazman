@@ -17,7 +17,8 @@ export class JoinForm extends Component {
         // "כתיבה",
         // "עזרה טכנולוגית",
         // "שמרטפות"
-      ]
+      ],
+      user: false
     };
     this.onNameChange = this.onNameChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -62,6 +63,7 @@ export class JoinForm extends Component {
       this.setState({ name: "" });
       console.log("save!");
     });
+    this.setState({ user: true });
   }
 
   render() {
@@ -206,6 +208,7 @@ export class JoinForm extends Component {
           >
             שלח
           </button>
+          {this.state.user && <p>תודה שהצטרפת לקהילה שלנו וברוך הבא!</p>}
         </div>
         <Footer />
       </div>

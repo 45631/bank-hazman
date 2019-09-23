@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class RequestForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], domain: "" };
+    this.state = { users: [], domain: "", help: false };
     this.submit = this.submit.bind(this);
     this.onCheck = this.onCheck.bind(this);
   }
@@ -20,6 +20,7 @@ export class RequestForm extends Component {
       .then(users => {
         this.setState({ users });
       });
+    this.setState({ help: true });
   }
 
   createUsersViews() {
@@ -103,7 +104,7 @@ export class RequestForm extends Component {
             <input
               type="checkbox"
               name="dog"
-              checked={this.state.domain === "tv"}
+              checked={this.state.domain === "dog"}
               onChange={this.onCheck}
             />
             דוגיסיטר
@@ -111,40 +112,40 @@ export class RequestForm extends Component {
             <input
               type="checkbox"
               name="car"
-              checked={this.state.domain}
-              onChange={this.statement}
+              checked={this.state.domain === "car"}
+              onChange={this.onCheck}
             />
             הסעות
             <br />
             <input
               type="checkbox"
               name="hamburger"
-              checked={this.state.domain}
-              onChange={this.statement}
+              checked={this.state.domain === "hamburger"}
+              onChange={this.onCheck}
             />
             בישולים
             <br />
             <input
               type="checkbox"
               name="tools"
-              checked={this.state.domain}
-              onChange={this.statement}
+              checked={this.state.domain === "tools"}
+              onChange={this.onCheck}
             />
             עבודות תחזוקה <br />
           </label>
 
           <div>
-            {" "}
             <button className="btn btn-primary" onClick={this.submit}>
               מי יכול לעזור לי?
             </button>
           </div>
         </div>
-        <div className="userDiv">
-          {" "}
-          <p> נסה לפנות ל:</p>
-          {usersViews}
-        </div>
+        {this.state.help && (
+          <div className="userDiv">
+            <p> נסה לפנות ל:</p>
+            {usersViews}
+          </div>
+        )}
       </div>
     );
   }

@@ -8,20 +8,31 @@ import { faPhone, faMailBulk, faPen } from "@fortawesome/free-solid-svg-icons";
 export class Contact extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", name: "", changeName: false };
+    this.state = {
+      value: "",
+      name: "",
+      NoMoney: false,
+      NoDog: false,
+      NoBalance: false,
+      NoSuccess: false,
+      user: false
+    };
     this.saveName = this.saveName.bind(this);
     this.comment = this.comment.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
     this.put = this.put.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
-    this.showChangeName = this.showChangeName.bind(this);
+    this.showNoSuccess = this.showNoSuccess.bind(this);
+    this.showNoBalance = this.showNoBalance.bind(this);
+    this.showNoDog = this.showNoDog.bind(this);
+    this.showNoMoney = this.showNoMoney.bind(this);
   }
   saveName(event) {
     this.setState({ name: event.target.value });
   }
   comment() {
-    const name = this.state.value;
-    this.setState({});
+    const name = this.state.name;
+    this.setState({ user: true });
   }
   onNameChange(event) {
     const target = event.target;
@@ -30,8 +41,17 @@ export class Contact extends Component {
 
     this.setState({ [name]: value });
   }
-  showChangeName() {
-    this.setState({ changeName: true });
+  showNoSuccess() {
+    this.setState({ NoSuccess: true });
+  }
+  showNoBalance() {
+    this.setState({ NoBalance: true });
+  }
+  showNoDog() {
+    this.setState({ NoDog: true });
+  }
+  showNoMoney() {
+    this.setState({ NoMoney: true });
   }
   put() {
     console.log("put");
@@ -69,7 +89,6 @@ export class Contact extends Component {
           <div className="card-deck">
             <div className="card">
               <FontAwesomeIcon icon={faPhone} />
-
               <div className="card-body">
                 <h5 className="card-title">התקשרו אלינו</h5>
                 <p className="card-text">
@@ -77,29 +96,23 @@ export class Contact extends Component {
                   נייח: 02-5712946 <br />
                   מרכזייה: 02-3333333
                 </p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    במידה ואין מענה אנא השאירו הודעה ונחזור אליכם בהקדם
-                  </small>
-                </p>
               </div>
+              <small className="text-muted">
+                במידה ואין מענה אנא השאירו הודעה ונחזור אליכם בהקדם
+              </small>
             </div>
             <div className="card">
               <FontAwesomeIcon icon={faMailBulk} />
-
               <div className="card-body">
                 <h5 className="card-title">שלחו לנו פניה בדוא"ל</h5>
                 <p className="card-text">
                   כתובת הדוא"ל שלנו: uvilevy@gmail.com
                 </p>
-                <p className="card-text">
-                  <small className="text-muted">מענה בתוך שני ימי עסקים</small>
-                </p>
               </div>
+              <small className="text-muted">מענה בתוך שני ימי עסקים</small>
             </div>
             <div className="card">
               <FontAwesomeIcon icon={faPen} />
-
               <div className="card-body">
                 <h5 className="card-title">השאירו פרטים</h5>
                 <p className="card-text">
@@ -131,44 +144,55 @@ export class Contact extends Component {
                     שלח
                   </button>
                 </form>
-                <p>
-                  תודה<span> {this.state.name}, </span>תיכף חוזרים אליך
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    בלחיצה על "שלח" הנכם נותנים הסכמתכם כי פרטיכם ישמרו במאגרי
-                    המידע שלנו
-                  </small>
-                </p>
-              </div>
+                {this.state.user && (
+                  <p>
+                    תודה<span> {this.state.name}, </span>תיכף חוזרים אליך
+                  </p>
+                )}
+              </div>{" "}
+              <small className="text-muted">
+                בלחיצה על "שלח" הנכם נותנים הסכמתכם כי פרטיכם ישמרו במאגרי המידע
+                שלנו
+              </small>
             </div>
           </div>
           <div className="problems">
             <h5>בעיות נפוצות:</h5>
 
             <ul>
-              <li onClick={this.showChangeName}>
-                מעוניין להחליף את שם המשתמש שלי
+              <li onClick={this.showNoSuccess}>לא מצליח להכנס לחשבון שלי</li>
+              {this.state.NoSuccess && (
+                <p className="answer">
+                  פנה למתנדבים שלנו בתמיכה הטכנית, בטל 02-5712946
+                </p>
+              )}
+              <li onClick={this.showNoBalance}>
+                מעוניין למשוך שעות אך אין לי יתרה בחשבון
               </li>
-              {this.state.changeName && <p>תיכף נעזור לך</p>}
-              <li>מעוניין למחוק את החשבון שלי</li>
-              <form>
-                <label>
-                  שם משתמש
-                  <input
-                    type="text"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.onNameChange}
-                  />
-                </label>
-                <button onClick={this.deleteUser}>
-                  אין לי זמן להתנדב יותר. מחק אותי!
-                </button>
-              </form>
-              <li>מעוניין למשוך שעות אך אין לי יתרה בחשבון</li>
-              <li>לא מצליח להכנס לחשבון שלי</li>
-              <li>קבעתי עם מישהו שיוציא את הכלב שלי לטיול והוא לא הגיע</li>
+              {this.state.NoBalance && (
+                <p className="answer">
+                  יתרת חובה אסורה באיסור חמור בבנק הזמן. הפקד שעות ורק לאחר מכן
+                  תוכל לחזור ולמשוך
+                </p>
+              )}
+              <li onClick={this.showNoDog}>
+                קבעתי עם מישהו שיוציא את הכלב שלי לטיול והוא לא הגיע
+              </li>
+              {this.state.NoDog && (
+                <p className="answer">
+                  פנה אלינו בדוא"ל או בטלפון, משתמש שאינו אחראי ייחסם ויושלך
+                  מהקהילה בבושת פנים.
+                </p>
+              )}
+              <li onClick={this.showNoMoney}>
+                יש החזר כספי על הוצאות כמו דלק / חומרי גלם לבישול וכו'?
+              </li>
+              {this.state.NoMoney && (
+                <p className="answer">
+                  ממש לא. כל הפעילות הנה התנדבותית לחלוטין, השימוש במטבעות מכל
+                  סוג שהוא לבד מ"מטבעות זמן" אסור.
+                </p>
+              )}
             </ul>
           </div>
         </div>

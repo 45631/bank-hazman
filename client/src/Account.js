@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Account extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { pullcounter: 0, pushCounter: 0 };
   }
 
   componentDidMount() {
@@ -14,35 +14,64 @@ export class Account extends Component {
 
   render() {
     const data = this.state.data;
-    console.log(data);
-    const dataViews = [];
+
+    const pullViews = [];
+    const pushViews = [];
+
     if (data) {
       data.forEach(action => {
-        const view = (
-          <tr>
-            <th scope="row">{action.date}</th>
-            <td>{action.category}</td>
-            <td>{action.to}</td>
-            <td>{action.push}</td>
-          </tr>
-        );
-        dataViews.push(view);
+        if (action.traffic == "הפקדה") {
+          const view = (
+            <tr>
+              <th scope="row">{action.date}</th>
+              <td>{action.category}</td>
+              <td>{action.traffic}</td>
+            </tr>
+          );
+
+          pullViews.push(view);
+        }
+        if (action.traffic == "משיכה") {
+          const view = (
+            <tr>
+              <th scope="row">{action.date}</th>
+              <td>{action.category}</td>
+              <td>{action.traffic}</td>
+            </tr>
+          );
+
+          pushViews.push(view);
+        }
       });
     }
 
     return (
       <div>
-        <img className="logo" src={require("../assets/bank.jpg")} />{" "}
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">תאריך</th>
-              <th scope="col">בתחום</th>
-              <th scope="col">משתמש שותף</th>
-            </tr>
-          </thead>
-          <tbody>{dataViews}</tbody>
-        </table>
+        <img className="logo" src={require("../assets/bank.jpg")} />
+        <div className="pull">
+          {" "}
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">תאריך</th>
+                <th scope="col">בתחום</th>
+              </tr>
+            </thead>
+            <tbody>{pullViews}</tbody>
+          </table>
+        </div>
+        <div className="push">
+          {" "}
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">תאריך</th>
+                <th scope="col">בתחום</th>
+              </tr>
+            </thead>
+            <tbody>{pushViews}</tbody>
+          </table>
+        </div>
       </div>
     );
   }
