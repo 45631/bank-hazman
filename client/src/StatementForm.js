@@ -52,6 +52,7 @@ export class StatementForm extends Component {
       body: JSON.stringify(data)
     }).then(() => {
       console.log("save!");
+      this.setState({ date: "", domain: "", traffic: "" });
       this.setState({ Reference: true });
     });
   }

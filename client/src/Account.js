@@ -3,7 +3,14 @@ import React, { Component } from "react";
 export class Account extends Component {
   constructor(props) {
     super(props);
-    this.state = { pullcounter: 0, pushCounter: 0 };
+    this.state = {
+      pushViews: [],
+      pullViews: [],
+      button: false,
+      balance: false
+    };
+    this.counter = this.counter.bind(this);
+    this.show = this.show.bind(this);
   }
 
   componentDidMount() {
@@ -11,8 +18,16 @@ export class Account extends Component {
       data.json().then(data => this.setState({ data: data }))
     );
   }
-
-  render() {
+  counter() {
+    const pullcounter = this.state.pullViews.length;
+    this.setState({ pullcounter });
+    const pushCounter = this.state.pushViews.length;
+    this.setState({ pushCounter });
+    let result = pullcounter - pushCounter;
+    this.setState({ result });
+    this.setState({ balance: true });
+  }
+  show() {
     const data = this.state.data;
 
     const pullViews = [];
@@ -25,7 +40,6 @@ export class Account extends Component {
             <tr>
               <th scope="row">{action.date}</th>
               <td>{action.category}</td>
-              <td>{action.traffic}</td>
             </tr>
           );
 
@@ -36,7 +50,6 @@ export class Account extends Component {
             <tr>
               <th scope="row">{action.date}</th>
               <td>{action.category}</td>
-              <td>{action.traffic}</td>
             </tr>
           );
 
@@ -44,33 +57,58 @@ export class Account extends Component {
         }
       });
     }
-
+    this.setState({ pullViews });
+    this.setState({ pushViews });
+    this.setState({ button: true });
+  }
+  render() {
     return (
       <div>
         <img className="logo" src={require("../assets/bank.jpg")} />
-        <div className="pull">
-          {" "}
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">תאריך</th>
-                <th scope="col">בתחום</th>
-              </tr>
-            </thead>
-            <tbody>{pullViews}</tbody>
-          </table>
+        <div className="accHeader">
+          <button className="btn-lg btn-block" onClick={this.show}>
+            הצג תנועות עו"ש
+          </button>
+          {this.state.button && (
+            <button className="btn-lg btn-block" onClick={this.counter}>
+              יתרה
+            </button>
+          )}
         </div>
-        <div className="push">
-          {" "}
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">תאריך</th>
-                <th scope="col">בתחום</th>
-              </tr>
-            </thead>
-            <tbody>{pushViews}</tbody>
-          </table>
+        {this.state.balance && (
+          <div className="balance">
+            <h6> סה"כ הפקדות: {this.state.pullcounter}</h6>
+            <h6> סה"כ משיכות: {this.state.pushCounter}</h6>
+            <h6> יתרתך למשיכה: {this.state.result}</h6>
+          </div>
+        )}
+
+        <div className="account">
+          <div className="pull">
+            <h3>הפקדות</h3>
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">תאריך</th>
+                  <th scope="col">בתחום</th>
+                </tr>
+              </thead>
+              <tbody>{this.state.pullViews}</tbody>
+            </table>
+          </div>
+          <div className="push">
+            <h3>משיכות</h3>
+
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">תאריך</th>
+                  <th scope="col">בתחום</th>
+                </tr>
+              </thead>
+              <tbody>{this.state.pushViews}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     );

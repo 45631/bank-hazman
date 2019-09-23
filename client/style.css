@@ -163,16 +163,32 @@ input {
   color: red;
 }
 .pull {
+  justify-content: flex-start;
+  margin-top: 200px;
   width: 40%;
   text-align: right;
   margin: 40px;
-  justify-content: flex-start;
+  padding: 20px;
+  color: green;
 }
 .push {
+  padding: 20px;
+  justify-content: flex-start;
   width: 40%;
   text-align: right;
   margin: 40px;
-  justify-content: flex-start;
+  color: red;
+}
+.balance {
+  margin: 50px;
+  text-align: center;
+}
+.accHeader {
+  text-align: center;
+}
+.account {
+  display: flex;
+  text-align: center;
 }
 .footer {
   width: 100%;
