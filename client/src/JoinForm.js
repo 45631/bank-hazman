@@ -60,7 +60,14 @@ export class JoinForm extends Component {
       },
       body: JSON.stringify(data)
     }).then(() => {
-      this.setState({ name: "" });
+      this.setState({
+        name: "",
+        userName: "",
+        phone: "",
+        mail: "",
+        city: "",
+        domain: []
+      });
       console.log("save!");
     });
     this.setState({ user: true });

@@ -66,8 +66,13 @@ export class About extends Component {
               />
             </div>
           </div>
-          <p>דף חשבון לדוגמא:</p>
-          <img />
+          <p>
+            <b>דף חשבון לדוגמא:</b>
+          </p>
+          <img
+            src={require("../assets/accountpage.png")}
+            className="accountImg"
+          />
           <hr />
           <h6> כיום בבנק הזמן - </h6>
           <p>

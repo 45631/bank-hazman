@@ -30,6 +30,11 @@ body {
   height: 400px;
   margin-top: 50px;
 }
+.accountImg {
+  height: 370px;
+  width: 700px;
+  margin: 40px;
+}
 
 header {
   width: 100%;

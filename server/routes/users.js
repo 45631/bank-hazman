@@ -34,44 +34,6 @@ router.post("/search", function(req, res, next) {
   });
 });
 router.post("/", function(req, res, next) {
-  var arr = [];
-  var baby = req.body.baby;
-  if (baby) {
-    arr.push("שמרטפות");
-  }
-  var tv = req.body.tv;
-  if (tv) {
-    arr.push("טכנולוגיה");
-  }
-  var pen = req.body.pen;
-  if (pen) {
-    arr.push("כתיבה");
-  }
-  var motorcycle = req.body.motorcycle;
-  if (motorcycle) {
-    arr.push("שליחויות");
-  }
-  var cap = req.body.cap;
-  if (cap) {
-    arr.push("לימודי עזר");
-  }
-  var dog = req.body.dog;
-  if (dog) {
-    arr.push("דוגיסיטר");
-  }
-  var car = req.body.car;
-  if (car) {
-    arr.push("הסעות");
-  }
-  var hamburger = req.body.hamburger;
-  if (hamburger) {
-    arr.push("בישול");
-  }
-  var tools = req.body.tools;
-  if (tools) {
-    arr.push("עבודות תחזוקה");
-  }
-
   var newUser = new userModel({
     id: req.body.id,
     name: req.body.name,
